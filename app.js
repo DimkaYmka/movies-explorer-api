@@ -19,19 +19,19 @@ const limiterSetting = {
 };
 
 const app = express();
-app.use(cors({
-  origin: [
-    'http://localhost:3001',
-    'http://localhost:3000',
-    'http://mesto.project.learn.nomoredomains.work',
-    'http://api.mesto.project.learn.nomoredomains.work',
-    'https://mesto.project.learn.nomoredomains.work',
-    'https://api.mesto.project.learn.nomoredomains.work',
-  ],
-  credentials: true,
-  maxAge: 30,
-}));
-// app.use(cors());
+// app.use(cors({
+//   origin: [
+//     'http://localhost:3001',
+//     'http://localhost:3000',
+//     'http://mesto.project.learn.nomoredomains.work',
+//     'http://api.mesto.project.learn.nomoredomains.work',
+//     'https://mesto.project.learn.nomoredomains.work',
+//     'https://api.mesto.project.learn.nomoredomains.work',
+//   ],
+//   credentials: true,
+//   maxAge: 30,
+// }));
+app.use(cors());
 
 const { PORT = 3001 } = process.env;
 const limiter = Limit(limiterSetting);
@@ -41,13 +41,13 @@ app.use(express.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-mongoose.connect('mongodb://127.0.0.1:27017/diplom', {
-  useNewUrlParser: true,
-});
-
-// mongoose.connect('mongodb://0.0.0.0:27017/diplom', {
+// mongoose.connect('mongodb://127.0.0.1:27017/diplom', {
 //   useNewUrlParser: true,
 // });
+
+mongoose.connect('mongodb://0.0.0.0:27017/diplom', {
+  useNewUrlParser: true,
+});
 
 // mongoose.connect('mongodb://localhost:27017/dip', {
 //   useNewUrlParser: true,
