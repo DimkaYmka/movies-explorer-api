@@ -33,7 +33,7 @@ app.use(cors({
 }));
 // app.use(cors());
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const limiter = Limit(limiterSetting);
 app.use(limiter);
 app.use(helmet());
