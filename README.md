@@ -1,6 +1,8 @@
 
-# бэкенд дипломной работы Я.Практикум 
+# бэкенд дипломной работы Я.Практикум (репозиторий)
 https://github.com/DimkaYmka/movie-explorer-api
+# бэкенд дипломной работы Я.Практикум 
+https://api.d1mkaymka.nomoredomains.xyz
 
 ## Директории
 
