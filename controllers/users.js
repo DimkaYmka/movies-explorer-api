@@ -4,12 +4,14 @@ const bcrypt = require('bcryptjs');
 const jsonWebToken = require('jsonwebtoken');
 const userSchema = require('../models/user');
 
-const { NODE_ENV, JWT_SECRET } = process.env;
+const {
+  NotFoundError,
+  BadRequestError,
+  ConflictError,
+  AuthError,
+} = require('../errors/index');
 
-const NotFoundError = require('../errors/400');
-const AuthError = require('../errors/401');
-const BadRequestError = require('../errors/404');
-const ConflictError = require('../errors/409');
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports.getUsers = (req, res, next) => {
   userSchema
@@ -90,11 +92,14 @@ const changeUserData = (id, newData, res, next) => {
       if (err.name === 'DocumentNotFoundError') {
         return next(new NotFoundError('Пользователь с с данным id не существует.'));
       }
+      if (err.code === 11000) {
+        return next(new ConflictError('Пользователь с таким email уже существует'));
+      }
       return next(err);
     });
 };
 
 module.exports.updateUser = (req, res, next) => {
-  const { name, about } = req.body;
-  return changeUserData(req.user._id, { name, about }, res, next);
+  const { name, email } = req.body;
+  return changeUserData(req.user._id, { name, email }, res, next);
 };

@@ -1,6 +1,6 @@
-module.exports = class NotFoundError extends Error {
+module.exports = class BadRequestError extends Error {
   constructor(message) {
     super(message);
-    this.statusCode = 404;
+    this.statusCode = 400;
   }
 };

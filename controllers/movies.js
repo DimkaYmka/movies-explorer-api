@@ -1,9 +1,10 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-else-return */
 const movieSchema = require('../models/movie');
-
-const NotFoundError = require('../errors/400');
-const ForbiddenError = require('../errors/403');
+const {
+  NotFoundError,
+  ForbiddenError,
+} = require('../errors/index');
 
 module.exports.getMovies = (req, res, next) => {
   movieSchema.find({ owner: req.user._id })

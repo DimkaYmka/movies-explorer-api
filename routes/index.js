@@ -2,7 +2,7 @@
 const router = require('express').Router();
 const auth = require('../middlewares/auth');
 
-const NotFoundError = require('../errors/400');
+const NotFoundError = require('../errors/404');
 const {
   getUsers, getUser, createUser, updateUser, updateAvatar, login,
 } = require('../controllers/users');

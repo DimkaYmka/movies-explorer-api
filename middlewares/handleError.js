@@ -1,4 +1,4 @@
-const { defaultErrorMessage } = require('../utils/errors');
+const { defaultErrorMessage } = require('../utils/constants');
 
 const errorHandler = (err, req, res, next) => {
   const { statusCode = 500, message } = err;

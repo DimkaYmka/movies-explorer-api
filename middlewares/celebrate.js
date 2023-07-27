@@ -23,14 +23,7 @@ const validationLogin = celebrate({
 const validationUpdateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    email: Joi.string().required().min(2).max(30),
-  }),
-});
-
-const validationCreateCard = celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().required().min(2).max(30),
-    link: Joi.string().required().regex(urlPattern),
+    email: Joi.string().required().email(),
   }),
 });
 
@@ -54,6 +47,5 @@ module.exports = {
   validationCreateUser,
   validationLogin,
   validationUpdateUser,
-  validationCreateCard,
   validationCreateMovie,
 };

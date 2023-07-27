@@ -1,4 +1,4 @@
-module.exports = class AuthError extends Error {
+module.exports = class AuthhError extends Error {
   constructor(message) {
     super(message);
     this.statusCode = 401;
