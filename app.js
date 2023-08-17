@@ -13,19 +13,19 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { limiterSetting } = require('./utils/constants');
 
 const app = express();
-// app.use(cors({
-//   origin: [
-//     'http://localhost:3001',
-//     'http://localhost:3000',
-//     'http://mesto.project.learn.nomoredomains.work',
-//     'http://api.mesto.project.learn.nomoredomains.work',
-//     'https://mesto.project.learn.nomoredomains.work',
-//     'https://api.mesto.project.learn.nomoredomains.work',
-//   ],
-//   credentials: true,
-//   maxAge: 30,
-// }));
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3001',
+    'http://localhost:3000',
+    'http://api.d1mkaymka.nomoredomains.xyz',
+    'http://d1mkaymka.nomoredomains.xyz',
+    'https://d1mkaymka.nomoredomains.xyz',
+    'https://api.d1mkaymka.nomoredomains.xyz',
+  ],
+  credentials: true,
+  maxAge: 30,
+}));
+// app.use(cors());
 
 const { PORT = 3000, DB_ADDRESS = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 const limiter = Limit(limiterSetting);
