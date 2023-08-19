@@ -1,10 +1,11 @@
 const { celebrate, Joi } = require('celebrate');
 
 const urlPattern = /^https?:\/\/(?:www\.)?(?:[a-z0-9-]+[a-z0-9]*\.)+[a-z]{2,}(?::[0-9]+)?(?:\/\S*)?#?$/i;
+const pattern = /^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/;
 
 const validationCreateUser = celebrate({
   body: Joi.object().keys({
-    email: Joi.string().required().email(),
+    email: Joi.string().required().regex(pattern),
     password: Joi.string().required().min(1),
     avatar: Joi.string().regex(urlPattern),
     name: Joi.string().min(2).max(30),
@@ -15,7 +16,7 @@ const validationCreateUser = celebrate({
 
 const validationLogin = celebrate({
   body: Joi.object().keys({
-    email: Joi.string().required().email(),
+    email: Joi.string().required().regex(pattern),
     password: Joi.string().required().min(6),
   }),
 });
@@ -23,7 +24,7 @@ const validationLogin = celebrate({
 const validationUpdateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    email: Joi.string().required().email(),
+    email: Joi.string().required().regex(pattern),
   }),
 });
 
